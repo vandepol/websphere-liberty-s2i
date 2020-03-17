@@ -1,14 +1,14 @@
 schema_version: 1
 
-name: openliberty/open-liberty-s2i
+name: vandepol/websphere-liberty-s2i
 version: 1.0
-from: bhdaniel/ol-javaee8-ubi-jdk:19.0.0.12
-description: "Open Liberty UBI image with javaee-8"
+from: ibmcom/websphere-liberty:kernel-java8-openj9-ubi
+description: "Liberty UBI image with javaee-8"
 labels:
     - name: io.k8s.description
-      value: "Open Liberty S2I Image"
+      value: "DVP Liberty S2I Image"
     - name: io.k8s.display-name
-      value: "Open Liberty S2I Builder"
+      value: "DVP Liberty S2I Builder"
     - name: io.openshift.tags
       value: "runner,builder,openliberty,javaee"
     - name: io.openshift.s2i.scripts-url
@@ -42,10 +42,10 @@ modules:
   # Install selected modules (in order)
   install:
     - name: maven
-    - name: ol-s2i
+    - name: wlp-s2i
 
 run:
       user: 1001
       cmd:
-          - "/opt/ol/wlp/bin/server run defaultServer"
+          - "/opt/ibm/wlp/bin/server run defaultServer"
     

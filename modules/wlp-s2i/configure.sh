@@ -4,7 +4,7 @@ set -e
 
 SCRIPT_DIR=$(dirname $0)
 ARTIFACTS_DIR=${SCRIPT_DIR}/artifacts
-WLP_DIR=/opt/ol
+WLP_DIR=/opt/ibm
 
 chown -R 1001 $WLP_DIR
 chown -R 1001 $SCRIPT_DIR

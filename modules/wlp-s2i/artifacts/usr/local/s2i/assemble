@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e 
 #
 # (C) Copyright IBM Corporation 2016.
 #
@@ -21,7 +21,7 @@ echo "Running s2i assemble with user $USER home $HOME"
 # Source code provided to S2I is at /tmp/src
 LOCAL_SOURCE_DIR=/tmp/src
 
-SERVER_DIR=/opt/ol/wlp/usr/servers/defaultServer
+SERVER_DIR=/opt/ibm/wlp/usr/servers/defaultServer
 
 # the subdirectory within LOCAL_SOURCE_DIR from where we should copy build
 # artifacts (*.war, *.jar)
@@ -83,12 +83,18 @@ if [ -n "${LIBERTY_RUNNABLE_JAR:-}" ]; then
 else
   if [ -f $LOCAL_SOURCE_DIR/src/main/liberty/config/server.xml ]; then
     echo "Copying provided server.xml to $SERVER_DIR"
+    ls -al $LOCAL_SOURCE_DIR
+    cat $LOCAL_SOURCE_DIR/src/main/liberty/config/server.xml
+    echo "LOCAL_SOURCE_DIR = $LOCAL_SOURCE_DIR/src/main/liberty/config/server.xml"
     cp $LOCAL_SOURCE_DIR/src/main/liberty/config/server.xml $SERVER_DIR
+    ls -al $SERVER_DIR
   fi
 
   # Copy supporting files from OL directory
   if [ -d $LOCAL_SOURCE_DIR/src/wlp/usr ]; then
-    cp -R $LOCAL_SOURCE_DIR/src/wlp/usr /opt/ol/wlp
+    echo "Copying provided usr dir to  /opt/ibm/wlp"
+    cp -R $LOCAL_SOURCE_DIR/src/wlp/usr /opt/ibm/wlp
+    ls -al /opt/ibm/wlp
   fi
 
 
@@ -101,7 +107,9 @@ else
 
 # Run configure again to pick up configuration from the environment (unless we're using a runnable jar)
   echo "Configuring Server"
-  /opt/ol/helpers/build/configure.sh
+  /opt/ibm/helpers/build/configure.sh
+  ls /opt/ibm/helpers/build/configure.sh
+  echo "Done configuring Server"
 fi
 
 

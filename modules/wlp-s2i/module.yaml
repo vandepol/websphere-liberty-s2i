@@ -1,6 +1,6 @@
 schema_version: 1
 
-name: ol-s2i
+name: wlp-s2i
 version: 1.0
 description: "Module used to install s2i scripts for Open Liberty"
 
