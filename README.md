@@ -1,7 +1,10 @@
-Open Liberty UBI-min images for OpenShift S2I
+WebSophere Liberty UBI-min images for OpenShift S2I
 =============================================
 
-This repository contains the source for building an Open Liberty Source to Image (S2I) builder using Red Hat Universal Base Image (UBI) 7 and Java 8. 
+This repository has been forked from OpenLiberty/open-liberty-s2i and modified to use the ibmcom/websphere-liberty:kernel-java8-openj9-ub image. 
+(If you want to fork this to use the IBM java, you can change this in the image.yaml.) 
+
+This repository contains the source for building an WebSphere Liberty Source to Image (S2I) builder using Red Hat Universal Base Image (UBI) 7 and Java 8. 
 
 More information on S2I can be found at https://github.com/openshift/source-to-image
 
@@ -15,11 +18,11 @@ Mac OSX installation and build [tips](doc/build-mac.md).
 Cloning the repository:
 
 ```
-$ git clone https://github.com/openliberty/open-liberty-s2i
-$ cd open-liberty-s2i
+$ git clone https://github.com/vandepol/websphere-liberty-s2i
+$ cd websphere-liberty-s2i
 ```
 
-Building the Open Liberty S2I builder:
+Building the WebSphere Liberty S2I builder:
 
 ```
 $ cekit build docker
@@ -31,8 +34,8 @@ using standalone [S2I](https://github.com/openshift/source-to-image) and then ru
 resulting image with [Docker](http://docker.io) execute:
 
 ```
-$ s2i build git://github.com/openshift/openshift-jee-sample openliberty/open-liberty-s2i:latest open-liberty-test
-$ docker run -p 9080:9080 open-liberty-test
+$ s2i build git://github.com/openshift/openshift-jee-sample vandepol/websphere-liberty-s2i:latest websphere-liberty-test
+$ docker run -p 9080:9080 websphere-liberty-test
 ```
 
 **Accessing the application:**
@@ -42,7 +45,7 @@ $ curl 127.0.0.1:9080/ROOT
 
 Test
 ----
-The tests for this repository check basic functionality of a JEE application built on top of the Open Liberty S2I image. 
+The tests for this repository check basic functionality of a JEE application built on top of the WebSphere Liberty S2I image. 
 ```
 $ make test
 ```
