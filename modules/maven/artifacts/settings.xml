@@ -6,7 +6,11 @@
     <!-- ### configured local repository ### -->
 
   <servers>
-    <!-- ### configured servers ### -->
+    <server>
+     <id>gevo-mvn</id>
+     <username>admin</username>
+     <password>sjdn5$3K</password>
+    </server>
   </servers>
 
   <mirrors>
@@ -74,4 +78,6 @@
     <activeProfile>securecentral</activeProfile>
     <!-- ### active profiles ### -->
   </activeProfiles>
+
+
 </settings>
